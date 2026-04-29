@@ -720,11 +720,46 @@
         <p>All rights reserved</p>
     </footer>
     <script>
-        // Auto-play music on first user interaction
-        let musicPlaying = false;
         const audio = document.getElementById('bgMusic');
         const btn = document.getElementById('musicBtn');
         audio.volume = 0.35;
+        let musicPlaying = false;
+
+        // Try to autoplay immediately
+        function tryAutoplay() {
+            audio.play().then(() => {
+                btn.textContent = '🔇';
+                musicPlaying = true;
+            }).catch(() => {
+                // Autoplay blocked — wait for first user interaction
+                btn.textContent = '🎵';
+                musicPlaying = false;
+            });
+        }
+
+        // Attempt autoplay on page load
+        window.addEventListener('load', tryAutoplay);
+
+        // Also try on first any user interaction (tap/click) if autoplay was blocked
+        document.addEventListener('click', function startOnInteraction() {
+            if (!musicPlaying) {
+                audio.play().then(() => {
+                    btn.textContent = '🔇';
+                    musicPlaying = true;
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', startOnInteraction);
+        }, { once: true });
+
+        document.addEventListener('touchstart', function startOnTouch() {
+            if (!musicPlaying) {
+                audio.play().then(() => {
+                    btn.textContent = '🔇';
+                    musicPlaying = true;
+                }).catch(() => {});
+            }
+            document.removeEventListener('touchstart', startOnTouch);
+        }, { once: true });
 
         function toggleMusic() {
             if (musicPlaying) {
@@ -732,22 +767,12 @@
                 btn.textContent = '🎵';
                 musicPlaying = false;
             } else {
-                audio.play().catch(() => {});
-                btn.textContent = '🔇';
-                musicPlaying = true;
-            }
-        }
-
-        // Try to autoplay on first interaction with the page
-        document.addEventListener('click', function startMusic() {
-            if (!musicPlaying) {
                 audio.play().then(() => {
                     btn.textContent = '🔇';
                     musicPlaying = true;
                 }).catch(() => {});
             }
-            document.removeEventListener('click', startMusic);
-        }, { once: true });
+        }
     </script>
 </body>
 </html>

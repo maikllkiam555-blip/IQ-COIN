@@ -6,6 +6,10 @@
     <title>IQ-COIN - Премиум коллекционная монета | Symbol of Enlightenment</title>
     <meta name="description" content="IQ-COIN - Эксклюзивная коллекционная монета. Символ просвещения человечества. Премиум качество, ограниченный выпуск 2026.">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/KfMEQnEPxURyfcPv.mp3" type="audio/mpeg">
+    </audio>
     <style>
         * {
             margin: 0;
@@ -28,6 +32,66 @@
             position: relative;
         }
         
+        /* MUSIC BUTTON */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #9333ea 0%, #d4af37 100%);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(147, 51, 234, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(147, 51, 234, 0.7);
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(147, 51, 234, 0.5); }
+            50% { box-shadow: 0 8px 40px rgba(212, 175, 55, 0.7); }
+        }
+
+        /* VIDEO SECTION */
+        .video-section {
+            text-align: center;
+        }
+        .video-wrapper {
+            position: relative;
+            max-width: 380px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #9333ea 0%, #d4af37 100%) 1;
+            box-shadow: 0 20px 60px rgba(147, 51, 234, 0.4);
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            border-radius: 17px;
+        }
+        .video-caption {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.85em, 2.5vw, 1em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 18px;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
         /* HEADER */
         header {
             background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(212, 175, 55, 0.08) 100%);
@@ -538,6 +602,9 @@
     </style>
 </head>
 <body>
+    <!-- Background Music Button -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Музыка / Music">🎵</button>
+
     <header>
         <div class="badge">⭐ Exclusive 2026 Limited Edition ⭐</div>
         <h1>IQ-COIN</h1>
@@ -545,6 +612,17 @@
     </header>
     
     <div class="container">
+        <!-- VIDEO SECTION -->
+        <div class="content-block video-section">
+            <h2 class="section-title">ПРЕЗЕНТАЦИЯ / PRESENTATION</h2>
+            <div class="video-wrapper">
+                <video controls playsinline poster="">
+                    <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/BAuqgijBdCXFzfFu.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p class="video-caption">Эксклюзивная коллекционная монета LUMEN · Luxury Presentation</p>
+        </div>
+
         <!-- ROTATING 3D COIN -->
         <div class="content-block coin-section">
             <div class="coin-container">
@@ -641,5 +719,35 @@
         <p>Символ просвещения человечества / Symbol of Human Enlightenment</p>
         <p>All rights reserved</p>
     </footer>
+    <script>
+        // Auto-play music on first user interaction
+        let musicPlaying = false;
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+        audio.volume = 0.35;
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                audio.pause();
+                btn.textContent = '🎵';
+                musicPlaying = false;
+            } else {
+                audio.play().catch(() => {});
+                btn.textContent = '🔇';
+                musicPlaying = true;
+            }
+        }
+
+        // Try to autoplay on first interaction with the page
+        document.addEventListener('click', function startMusic() {
+            if (!musicPlaying) {
+                audio.play().then(() => {
+                    btn.textContent = '🔇';
+                    musicPlaying = true;
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', startMusic);
+        }, { once: true });
+    </script>
 </body>
 </html>

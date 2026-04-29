@@ -2,9 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IQ-COIN - Премиум коллекционная монета</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IQ-COIN - Премиум коллекционная монета | Symbol of Enlightenment</title>
     <meta name="description" content="IQ-COIN - Эксклюзивная коллекционная монета. Символ просвещения человечества. Премиум качество, ограниченный выпуск 2026.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,303 +13,527 @@
             box-sizing: border-box;
         }
         
-        body {
-            font-family: 'Playfair Display', Georgia, serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 50%, #1a1a1a 100%);
-            color: #e8d4b8;
-            line-height: 1.6;
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
         }
         
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1410 50%, #0f0f0f 100%);
+            color: #e8d4b8;
+            line-height: 1.8;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        /* HEADER */
         header {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%);
-            border-bottom: 2px solid #d4af37;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(212, 175, 55, 0.08) 100%);
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #d4af37 0%, #9333ea 50%, #d4af37 100%) 1;
             padding: 40px 20px;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(147, 51, 234, 0.15);
         }
         
         .badge {
             display: inline-block;
-            background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 100%);
-            color: #1a1a1a;
+            background: linear-gradient(135deg, #9333ea 0%, #d4af37 100%);
+            color: #fff;
             padding: 10px 25px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            box-shadow: 0 5px 15px rgba(147, 51, 234, 0.4);
         }
         
         h1 {
-            font-size: 4em;
-            color: #d4af37;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 3px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5em, 8vw, 4.5em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: 5px;
+            font-weight: 900;
         }
         
         .subtitle {
-            font-size: 1.3em;
-            color: #c9a961;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1em, 4vw, 1.4em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-style: italic;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
         
-        /* COIN IMAGES SECTION */
-        .coin-images-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(184, 134, 11, 0.05) 100%);
-            border: 2px solid #d4af37;
+        /* CONTENT BLOCK WITH VINE BORDER */
+        .content-block {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.08) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #9333ea 0%, #d4af37 50%, #9333ea 100%) 1;
             border-radius: 20px;
-            padding: 60px 40px;
-            margin-bottom: 60px;
-            text-align: center;
-        }
-        
-        .coin-display {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .coin-image {
+            padding: 40px 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 50px rgba(147, 51, 234, 0.15);
             position: relative;
+        }
+        
+        /* ROTATING COIN SECTION */
+        .coin-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .coin-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto 30px;
+            perspective: 1200px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .coin-3d {
+            position: relative;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
-            border: 8px solid #d4af37;
-            max-width: 400px;
-            margin: 0 auto;
+            box-shadow: 
+                0 40px 100px rgba(147, 51, 234, 0.4),
+                inset -20px -20px 60px rgba(0, 0, 0, 0.8),
+                inset 20px 20px 60px rgba(147, 51, 234, 0.2);
+            border: 6px solid;
+            border-image: linear-gradient(135deg, #9333ea 0%, #d4af37 100%) 1;
+            animation: rotateCoin3D 12s linear infinite;
+            background: linear-gradient(135deg, #2d2416 0%, #1a1410 100%);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         
-        .coin-image img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
+        @keyframes rotateCoin3D {
+            0% { 
+                transform: rotateY(0deg) rotateX(8deg) scale(1);
+                background-image: url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/mRnWWbrLrBtULrqm.png');
+            }
+            50% { 
+                transform: rotateY(180deg) rotateX(8deg) scale(1.02);
+                background-image: url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/LeoXNaTrXWDmDjld.png');
+            }
+            100% { 
+                transform: rotateY(360deg) rotateX(8deg) scale(1);
+                background-image: url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/mRnWWbrLrBtULrqm.png');
+            }
         }
         
         .coin-label {
-            font-size: 1.2em;
-            color: #d4af37;
-            margin-top: 15px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1em, 3vw, 1.3em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .coin-info {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.9em, 2.5vw, 1em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 10px;
+            font-style: italic;
+            font-weight: 300;
         }
         
         /* DESCRIPTION SECTION */
-        .description-section {
-            background: rgba(212, 175, 55, 0.05);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .description-section h2 {
-            font-size: 2em;
-            color: #d4af37;
-            margin-bottom: 30px;
-            text-align: center;
-            letter-spacing: 2px;
-        }
-        
         .description-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .description-content h3 {
-            font-size: 1.5em;
-            color: #d4af37;
-            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2em, 4vw, 1.6em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
         
         .description-content p {
-            font-size: 1em;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.95em, 2.5vw, 1.1em);
             color: #e8d4b8;
-            line-height: 1.8;
+            line-height: 2;
             margin-bottom: 15px;
+            font-weight: 300;
         }
         
-        /* INFO SECTION */
-        .info-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .info-section h2 {
-            font-size: 2em;
-            color: #d4af37;
-            margin-bottom: 30px;
+        /* SECTION TITLE */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
             text-align: center;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: 700;
         }
         
+        /* SPECS GRID */
         .specs {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
         }
         
         .spec-item {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid #d4af37;
-            border-radius: 10px;
-            padding: 20px;
+            background: rgba(147, 51, 234, 0.12);
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #9333ea 0%, #d4af37 100%) 1;
+            border-radius: 15px;
+            padding: 30px 20px;
             text-align: center;
+            box-shadow: 0 8px 25px rgba(147, 51, 234, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .spec-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(147, 51, 234, 0.25);
+            background: rgba(147, 51, 234, 0.18);
         }
         
         .spec-label {
-            font-size: 0.9em;
-            color: #c9a961;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.8em, 2vw, 0.95em);
+            color: #d4af37;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
         
         .spec-value {
-            font-size: 1.4em;
-            color: #d4af37;
-            font-weight: bold;
-        }
-        
-        /* PURCHASE INSTRUCTIONS */
-        .instructions-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .instructions-section h2 {
-            font-size: 2em;
-            color: #d4af37;
-            margin-bottom: 40px;
-            text-align: center;
-            letter-spacing: 2px;
-        }
-        
-        .steps {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        
-        .step {
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .step-number {
-            font-size: 3em;
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .step h3 {
-            font-size: 1.5em;
-            color: #d4af37;
-            margin-bottom: 15px;
-        }
-        
-        .step p {
-            font-size: 1.1em;
-            color: #e8d4b8;
-            line-height: 1.8;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1em, 3vw, 1.5em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
         
         /* PRICE SECTION */
         .price-section {
-            background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 100%);
-            color: #1a1a1a;
-            padding: 40px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #9333ea 0%, #d4af37 100%);
+            color: #fff;
+            padding: 50px 30px;
+            border-radius: 20px;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(147, 51, 234, 0.4);
+            border: 3px solid #d4af37;
         }
         
         .price-section h2 {
-            font-size: 1.3em;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.3em, 4vw, 1.8em);
             margin-bottom: 15px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: 700;
         }
         
         .price {
-            font-size: 3em;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5em, 8vw, 4em);
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
-        /* TELEGRAM LINK */
+        .price-section p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.95em, 2.5vw, 1.1em);
+            color: #fff;
+            font-weight: 300;
+        }
+        
+        /* INSTRUCTIONS */
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .step {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #9333ea 0%, #d4af37 100%) 1;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(147, 51, 234, 0.25);
+            background: rgba(147, 51, 234, 0.1);
+        }
+        
+        .step-number {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5em, 6vw, 3.5em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+        
+        .step h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2em, 3.5vw, 1.6em);
+            background: linear-gradient(135deg, #d4af37 0%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .step p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.95em, 2.5vw, 1.05em);
+            color: #e8d4b8;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        /* TELEGRAM SECTION */
         .telegram-section {
             background: linear-gradient(135deg, rgba(0, 136, 204, 0.2) 0%, rgba(0, 136, 204, 0.1) 100%);
-            border: 2px solid #0088cc;
-            border-radius: 15px;
-            padding: 40px;
+            border: 3px solid #0088cc;
+            border-radius: 20px;
+            padding: 50px 30px;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 50px rgba(0, 136, 204, 0.2);
         }
         
         .telegram-section h2 {
-            font-size: 1.8em;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5em, 4vw, 2em);
             color: #0088cc;
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        
+        .telegram-section p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #0088cc;
+            margin-bottom: 30px;
+            font-size: clamp(0.95em, 2.5vw, 1.05em);
+            font-weight: 300;
+            line-height: 1.8;
         }
         
         .telegram-link {
             display: inline-block;
             background: linear-gradient(135deg, #0088cc 0%, #00a8e8 100%);
             color: white;
-            padding: 15px 40px;
-            border-radius: 30px;
+            padding: 18px 45px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(0.95em, 2.5vw, 1.1em);
             transition: all 0.3s ease;
-            border: none;
+            border: 2px solid #0088cc;
             cursor: pointer;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
         }
         
         .telegram-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.4);
+            transform: scale(1.08);
+            box-shadow: 0 15px 40px rgba(0, 136, 204, 0.5);
+            background: linear-gradient(135deg, #00a8e8 0%, #0088cc 100%);
         }
         
+        /* FOOTER */
         footer {
-            background: rgba(0, 0, 0, 0.5);
-            border-top: 2px solid #d4af37;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, #9333ea 0%, #d4af37 50%, #9333ea 100%) 1;
             padding: 40px 20px;
             text-align: center;
-            color: #c9a961;
+            color: #d4af37;
+            box-shadow: 0 -10px 40px rgba(147, 51, 234, 0.15);
         }
         
         footer p {
+            font-family: 'Cormorant Garamond', serif;
             margin-bottom: 10px;
+            font-size: clamp(0.9em, 2vw, 1em);
+            font-weight: 300;
         }
         
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            .coin-display { grid-template-columns: 1fr; }
-            .description-content { grid-template-columns: 1fr; }
-            .specs { grid-template-columns: 1fr; }
-            .steps { grid-template-columns: 1fr; }
+            body {
+                font-size: 14px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .container {
+                padding: 30px 15px;
+            }
+            
+            .coin-3d {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .coin-container {
+                height: 280px;
+            }
+            
+            .description-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .specs {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .spec-item {
+                padding: 20px 15px;
+            }
+            
+            .step {
+                padding: 35px 25px;
+            }
+            
+            .content-block {
+                padding: 30px 20px;
+                border-radius: 18px;
+                margin-bottom: 40px;
+            }
+            
+            .price-section {
+                padding: 40px 20px;
+            }
+            
+            .telegram-section {
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                font-size: 13px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+                letter-spacing: 2px;
+            }
+            
+            .subtitle {
+                font-size: 0.95em;
+            }
+            
+            .badge {
+                font-size: 9px;
+                padding: 8px 15px;
+            }
+            
+            .coin-3d {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .coin-container {
+                height: 220px;
+            }
+            
+            .specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .spec-item {
+                padding: 18px 12px;
+            }
+            
+            .container {
+                padding: 20px 12px;
+            }
+            
+            .content-block {
+                padding: 25px 15px;
+                border-radius: 16px;
+                margin-bottom: 30px;
+            }
+            
+            .steps {
+                gap: 20px;
+            }
+            
+            .step {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -320,104 +545,95 @@
     </header>
     
     <div class="container">
-        <!-- COIN IMAGES -->
-        <section class="coin-images-section">
-            <div class="coin-display">
-                <div>
-                    <div class="coin-image">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/PrWUATKFfMkNkDqn.jpeg" alt="IQ-COIN Obverse">
-                    </div>
-                    <p class="coin-label">OBVERSE - Front Side</p>
-                </div>
-                <div>
-                    <div class="coin-image">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663544326124/YupavjiCcgxbwNku.jpeg" alt="IQ-COIN Reverse">
-                    </div>
-                    <p class="coin-label">REVERSE - Back Side</p>
-                </div>
+        <!-- ROTATING 3D COIN -->
+        <div class="content-block coin-section">
+            <div class="coin-container">
+                <div class="coin-3d"></div>
             </div>
-        </section>
+            <p class="coin-label">Premium Collectible Coin</p>
+            <p class="coin-info">Видны обе стороны монеты, толщина и гурт с переплетающимися лозами<br>Both sides visible, thickness and edge with decorative vines</p>
+        </div>
         
         <!-- DESCRIPTION SECTION -->
-        <section class="description-section">
-            <h2>О МОНЕТЕ / ABOUT THE COIN</h2>
+        <div class="content-block">
+            <h2 class="section-title">О МОНЕТЕ / ABOUT THE COIN</h2>
             <div class="description-content">
                 <div>
                     <h3>🇷🇺 ОПИСАНИЕ</h3>
                     <p>IQ-COIN представляет собой символ просвещения человечества и духовного пробуждения. Эта эксклюзивная коллекционная монета воплощает вечный огонь знания и мудрости, объединяя древнюю символику с современным искусством.</p>
                     <p>Реверс монеты демонстрирует мистические глаза дракона, символизирующие защиту и древнюю мудрость, а аверс показывает священный огонь с священной геометрией — универсальным символом творения и гармонии.</p>
-                    <p>Каждая монета тщательно изготовлена из премиум-сплава титана и латуни, весит ровно 7,5 грамма. Тонкие детали передают суть просвещения, создавая трёхмерный эффект, который погружает зрителя глубже в символизм.</p>
+                    <p>Каждая монета тщательно изготовлена из премиум-сплава титана и латуни, весит ровно 7,5 грамма. Тонкие детали передают суть просвещения, создавая трёхмерный эффект.</p>
                 </div>
                 <div>
                     <h3>🇬🇧 DESCRIPTION</h3>
                     <p>IQ-COIN represents a profound symbol of human enlightenment and spiritual awakening. This exclusive collectible coin embodies the eternal flame of knowledge and wisdom, merging ancient symbolism with contemporary artistry.</p>
                     <p>The reverse side showcases mystical dragon eyes symbolizing protection and ancient wisdom, while the obverse displays the sacred flame with the sacred geometry pattern—a universal symbol of creation and harmony.</p>
-                    <p>Each coin is meticulously crafted from premium titanium-brass alloy, weighing exactly 7.5 grams. The intricate details capture the essence of illumination, creating a three-dimensional effect that draws the viewer deeper into the symbolism.</p>
+                    <p>Each coin is meticulously crafted from premium titanium-brass alloy, weighing exactly 7.5 grams. The intricate details capture the essence of illumination, creating a three-dimensional effect.</p>
                 </div>
             </div>
-        </section>
+        </div>
         
         <!-- INFORMATION SECTION -->
-        <section class="info-section">
-            <h2>ХАРАКТЕРИСТИКИ / SPECIFICATIONS</h2>
+        <div class="content-block">
+            <h2 class="section-title">ХАРАКТЕРИСТИКИ / SPECIFICATIONS</h2>
             <div class="specs">
                 <div class="spec-item">
-                    <div class="spec-label">Материал / Material</div>
-                    <div class="spec-value">Titanium-Brass Alloy</div>
+                    <div class="spec-label">Материал</div>
+                    <div class="spec-value">Titanium-Brass</div>
                 </div>
                 <div class="spec-item">
-                    <div class="spec-label">Вес / Weight</div>
+                    <div class="spec-label">Вес</div>
                     <div class="spec-value">7.5 g</div>
                 </div>
                 <div class="spec-item">
-                    <div class="spec-label">Год / Year</div>
+                    <div class="spec-label">Год</div>
                     <div class="spec-value">2026</div>
                 </div>
                 <div class="spec-item">
-                    <div class="spec-label">Номинал / Denomination</div>
+                    <div class="spec-label">Номинал</div>
                     <div class="spec-value">€100</div>
                 </div>
                 <div class="spec-item">
-                    <div class="spec-label">Страна / Country</div>
+                    <div class="spec-label">Страна</div>
                     <div class="spec-value">China</div>
                 </div>
                 <div class="spec-item">
-                    <div class="spec-label">Состояние / Condition</div>
+                    <div class="spec-label">Состояние</div>
                     <div class="spec-value">New</div>
                 </div>
             </div>
-        </section>
+        </div>
         
         <!-- PRICE SECTION -->
-        <section class="price-section">
+        <div class="price-section">
             <h2>ЦЕНА / PRICE</h2>
             <div class="price">€100</div>
             <p>Эксклюзивная коллекционная монета / Exclusive Collectible Coin</p>
-        </section>
+        </div>
         
         <!-- PURCHASE INSTRUCTIONS -->
-        <section class="instructions-section">
-            <h2>КАК ПРИОБРЕСТИ / HOW TO BUY</h2>
+        <div class="content-block">
+            <h2 class="section-title">КАК ПРИОБРЕСТИ / HOW TO BUY</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1️⃣</div>
-                    <h3>Регистрация / Registration</h3>
-                    <p>Присоединитесь к нашему Telegram каналу и зарегистрируйтесь<br><br>Join our Telegram channel and register</p>
+                    <h3>Регистрация</h3>
+                    <p>Присоединитесь к нашему Telegram каналу и зарегистрируйтесь</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2️⃣</div>
-                    <h3>Заявка / Request</h3>
-                    <p>Отправьте заявку оператору в канале на приобретение монеты<br><br>Send a request to the operator in the channel to purchase the coin</p>
+                    <h3>Заявка</h3>
+                    <p>Отправьте заявку оператору в канале на приобретение монеты</p>
                 </div>
             </div>
-        </section>
+        </div>
         
         <!-- TELEGRAM SECTION -->
-        <section class="telegram-section">
-            <h2>📱 ПРИСОЕДИНИТЕСЬ К НАМ / JOIN US</h2>
-            <p style="color: #0088cc; margin-bottom: 20px; font-size: 1.1em;">Перейдите в наш Telegram канал для регистрации и приобретения<br>Go to our Telegram channel to register and purchase</p>
-            <a href="https://t.me/Reg_L_Centr" class="telegram-link" target="_blank">📲 TELEGRAM КАНАЛ / TELEGRAM CHANNEL</a>
-        </section>
+        <div class="telegram-section">
+            <h2>📱 ПРИСОЕДИНИТЕСЬ К НАМ</h2>
+            <p>Перейдите в наш Telegram канал для регистрации и приобретения</p>
+            <a href="https://t.me/+BtRt3lervothOGRh" class="telegram-link" target="_blank">📲 TELEGRAM КАНАЛ</a>
+        </div>
     </div>
     
     <footer>

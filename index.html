@@ -739,6 +739,39 @@
         // Attempt autoplay on page load
         window.addEventListener('load', tryAutoplay);
 
+        // VIDEO / MUSIC SYNC
+        const video = document.querySelector('.video-wrapper video');
+        if (video) {
+            // When video starts playing — pause background music
+            video.addEventListener('play', () => {
+                if (musicPlaying) {
+                    audio.pause();
+                    btn.textContent = '🎵';
+                    musicPlaying = false;
+                    video._pausedMusic = true; // remember we paused it
+                }
+            });
+            // When video pauses or ends — resume background music
+            video.addEventListener('pause', () => {
+                if (video._pausedMusic) {
+                    audio.play().then(() => {
+                        btn.textContent = '🔇';
+                        musicPlaying = true;
+                    }).catch(() => {});
+                    video._pausedMusic = false;
+                }
+            });
+            video.addEventListener('ended', () => {
+                if (video._pausedMusic) {
+                    audio.play().then(() => {
+                        btn.textContent = '🔇';
+                        musicPlaying = true;
+                    }).catch(() => {});
+                    video._pausedMusic = false;
+                }
+            });
+        }
+
         // Also try on first any user interaction (tap/click) if autoplay was blocked
         document.addEventListener('click', function startOnInteraction() {
             if (!musicPlaying) {
